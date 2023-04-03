@@ -1,0 +1,34 @@
+version="0.1.0"
+name="testpackage"
+description="my amazing package"
+maintainer="nothing"
+license="foo bar license"
+homepage="https://example.com"
+srcfiles="https://static.programmeruser.tk/out.tar.gz"
+depends=""
+replaces=""
+
+prepare() {
+	echo "prepare"
+}
+build() {
+	cd "$SRCFILEDIR"
+	cd "example"
+	echo "building"
+	echo "file contents of test.txt="
+	cat test.txt
+}
+do_install() {
+	mkdir -p "$DESTDIR/usr/share"
+	cp test.txt "$DESTDIR/usr/share/test.txt"
+}
+packaging() {
+	echo "packaging phase" $PKGDIR
+}
+
+preinstall() {
+	echo "pre install hook"
+}
+postinstall() {
+	echo "post install hook"
+}
